@@ -20,7 +20,7 @@ jobs:
         run: |
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            ca-certificates cargo debhelper dpkg-dev git libglib2.0-bin libpulse-dev \
+            build-essential ca-certificates cargo debhelper dpkg-dev git libglib2.0-bin libpulse-dev \
             pkg-config rustc util-linux
       - name: Check out source
         uses: actions/checkout@v4
