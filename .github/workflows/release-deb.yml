@@ -50,6 +50,8 @@ jobs:
     needs: build-deb
     runs-on: ubuntu-24.04
     steps:
+      - name: Check out source
+        uses: actions/checkout@v4
       - name: Download package artifact
         uses: actions/download-artifact@v4
         with:
