@@ -1,0 +1,29 @@
+Source: gnomehandy
+Section: gnome
+Priority: optional
+Maintainer: phiKremer <web.delphin@googlemail.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ cargo,
+ rustc,
+ libpulse-dev,
+ libglib2.0-bin,
+ pkg-config
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/phiKremer/gnomehandy
+
+Package: gnomehandy
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ bluez,
+ gnome-shell (>= 48),
+ libpulse0,
+ libpulse-simple0
+Description: GNOME Bluetooth hands-free integration for mobile phones
+ GNOME Handy connects a paired phone to GNOME over Bluetooth HFP. It provides
+ a GNOME Shell extension and a Rust service for call controls, audio routing,
+ ringtone playback, tel: URI handling, and optional SMS notifications through
+ Bluetooth MAP.

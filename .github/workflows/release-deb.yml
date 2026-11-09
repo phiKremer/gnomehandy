@@ -1,0 +1,66 @@
+name: Build and publish Debian package
+
+on:
+  push:
+    branches:
+      - 'release/**'
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-24.04
+    container: debian:trixie
+    steps:
+      - name: Install build tools
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential ca-certificates cargo debhelper dpkg-dev git libglib2.0-bin libpulse-dev \
+            pkg-config rustc util-linux
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Build package
+        run: |
+          useradd --create-home --shell /bin/bash package-builder
+          chown -R package-builder:package-builder "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE/.."
+          set -o pipefail
+          if ! su package-builder -s /bin/bash -c 'dpkg-buildpackage --build=binary --no-sign' 2>&1 | tee build.log; then
+            tail -n 30 build.log | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g' >> "$GITHUB_STEP_SUMMARY"
+            tail -n 30 build.log | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g' | while IFS= read -r line; do
+              echo "::error title=Debian package build failed::$line"
+            done
+            exit 1
+          fi
+          mkdir -p dist
+          cp ../gnomehandy_*.deb dist/
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gnomehandy-debian-13-amd64
+          path: dist/*.deb
+          if-no-files-found: error
+
+  publish-release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build-deb
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Download package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gnomehandy-debian-13-amd64
+          path: dist
+      - name: Publish GitHub release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/*.deb \
+            --title "GNOME Handy $GITHUB_REF_NAME" \
+            --generate-notes

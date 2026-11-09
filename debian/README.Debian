@@ -1,0 +1,14 @@
+GNOME Handy is installed system-wide. Enable it for your user account with:
+
+  gnome-extensions enable handy@pkremer.de
+  systemctl --user enable --now pkremer-gnomehandy.service
+
+The service can be inspected with:
+
+  systemctl --user status pkremer-gnomehandy.service
+  journalctl --user -u pkremer-gnomehandy.service -f
+
+The tel: URI handler is registered as an application. To make it the default
+handler for the current user, run:
+
+  xdg-mime default gnomehandy-tel-handler.desktop x-scheme-handler/tel
