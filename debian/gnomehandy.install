@@ -1,0 +1,13 @@
+usr/bin/pkremer-gnomehandy
+usr/lib/systemd/user/pkremer-gnomehandy.service
+usr/share/applications/gnomehandy-tel-handler.desktop
+usr/share/gnome-shell/extensions/handy@pkremer.de/bluetooth-status.js
+usr/share/gnome-shell/extensions/handy@pkremer.de/dialer.js
+usr/share/gnome-shell/extensions/handy@pkremer.de/extension.js
+usr/share/gnome-shell/extensions/handy@pkremer.de/incoming-call-overlay.js
+usr/share/gnome-shell/extensions/handy@pkremer.de/metadata.json
+usr/share/gnome-shell/extensions/handy@pkremer.de/prefs.js
+usr/share/gnome-shell/extensions/handy@pkremer.de/rust-service.js
+usr/share/gnome-shell/extensions/handy@pkremer.de/stylesheet.css
+usr/share/gnome-shell/extensions/handy@pkremer.de/schemas/de.pkremer.GnomeHandy.gschema.xml
+usr/share/gnome-shell/extensions/handy@pkremer.de/schemas/gschemas.compiled
