@@ -43,6 +43,27 @@ Das Skript baut den Dienst im Release-Modus, installiert die GNOME-Erweiterung i
 
 Kopple dein Handy anschließend in den GNOME-Bluetooth-Einstellungen. Bestätige am Handy die HFP-Verbindung. Für SMS musst du gegebenenfalls zusätzlich den Nachrichten- beziehungsweise MAP-Zugriff erlauben. Einige Telefone erlauben HFP und MAP getrennt.
 
+### Debian-Paket
+
+Ab Release `v0.1.0` baut GitHub Actions ein Paket für Debian 13 (amd64) und hängt es an die GitHub-Veröffentlichung an. Lade die `.deb`-Datei von der [Releases-Seite](https://github.com/phiKremer/gnomehandy/releases) herunter und installiere sie mit:
+
+```sh
+sudo apt install ./gnomehandy_0.1.0-1_amd64.deb
+```
+
+Danach aktiviere die Erweiterung und den Benutzerdienst:
+
+```sh
+gnome-extensions enable handy@pkremer.de
+systemctl --user enable --now pkremer-gnomehandy.service
+```
+
+Der Paketbau läuft auf GitHub Actions; ein lokaler Rust-Build ist zum Installieren der veröffentlichten `.deb` nicht erforderlich. Der `tel:`-Handler kann anschließend bei Bedarf für dein Benutzerkonto gesetzt werden:
+
+```sh
+xdg-mime default gnomehandy-tel-handler.desktop x-scheme-handler/tel
+```
+
 ## Bedienung
 
 Öffne die GNOME-Handy-Erweiterung in der oberen Leiste. Dort siehst du den Dienst- und Handystatus und kannst eine Nummer über das Tastenfeld wählen. Über **Einstellungen** legst du Klingelton, Klingel-Ausgänge, Gesprächsausgabe und Mikrofon fest.

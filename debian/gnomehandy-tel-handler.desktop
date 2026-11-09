@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=GNOME Handy Telefonie
+Comment=Telefonnummer über das verbundene Mobiltelefon wählen
+Terminal=false
+Exec=/usr/bin/pkremer-gnomehandy --tel %u
+MimeType=x-scheme-handler/tel;
