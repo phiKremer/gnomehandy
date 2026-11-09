@@ -28,7 +28,14 @@ jobs:
         run: |
           useradd --create-home --shell /bin/bash package-builder
           chown -R package-builder:package-builder "$GITHUB_WORKSPACE"
-          su package-builder -s /bin/bash -c 'dpkg-buildpackage --build=binary --no-sign'
+          set -o pipefail
+          if ! su package-builder -s /bin/bash -c 'dpkg-buildpackage --build=binary --no-sign' 2>&1 | tee build.log; then
+            tail -n 30 build.log | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g' >> "$GITHUB_STEP_SUMMARY"
+            tail -n 30 build.log | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g' | while IFS= read -r line; do
+              echo "::error title=Debian package build failed::$line"
+            done
+            exit 1
+          fi
           mkdir -p dist
           cp ../gnomehandy_*.deb dist/
       - name: Upload package artifact
