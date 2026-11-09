@@ -1,0 +1,9 @@
+<schemalist>
+  <schema id="de.pkremer.GnomeHandy" path="/de/pkremer/gnomehandy/">
+    <key name="ringtone-file" type="s">
+      <default>'theme:bell-window-system'</default>
+      <summary>Ringtone file for incoming calls</summary>
+      <description>Absolute path to the sound file played for incoming calls.</description>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,9 @@
+{
+  "name": "pkremer-gnomehandy",
+  "description": "Handy-Erweiterung für GNOME Shell",
+  "uuid": "handy@pkremer.de",
+  "settings-schema": "de.pkremer.GnomeHandy",
+  "shell-version": [
+    "48"
+  ]
+}

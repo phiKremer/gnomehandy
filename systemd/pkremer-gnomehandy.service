@@ -1,0 +1,16 @@
+[Unit]
+Description=GNOME Handy Bluetooth Hands-Free Service
+After=default.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/pkremer-gnomehandy
+Restart=always
+RestartSec=5
+TimeoutStopSec=15
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,127 @@
+.handy-call-overlay {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.handy-call-card {
+    width: 340px;
+    padding: 28px;
+    spacing: 18px;
+}
+
+.handy-call-header {
+    spacing: 8px;
+}
+
+.handy-call-bluetooth-icon {
+    icon-size: 12px;
+}
+
+.handy-call-contact {
+    spacing: 8px;
+}
+
+.handy-call-avatar {
+    icon-size: 88px;
+    color: -st-accent-color;
+}
+
+.handy-call-name {
+    font-size: 1.45em;
+    font-weight: bold;
+}
+
+.handy-call-number {
+    font-size: 1.1em;
+}
+
+.handy-call-actions {
+    spacing: 24px;
+}
+
+.handy-call-actions .destructive-action,
+.handy-call-actions .suggested-action {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 8px;
+    border-radius: 36px;
+    color: white;
+}
+
+.handy-call-actions .handy-call-keypad-button {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 8px;
+    border-radius: 36px;
+}
+
+.handy-call-keypad-button .handy-call-action-icon {
+    color: -st-color;
+}
+
+.handy-call-actions .destructive-action {
+    background-color: #c01c28;
+}
+
+.handy-call-actions .suggested-action {
+    background-color: #2ec27e;
+}
+
+.handy-call-action-icon {
+    icon-size: 24px;
+}
+
+.handy-call-dtmf-grid {
+    column-spacing: 8px;
+    row-spacing: 8px;
+    x-align: center;
+}
+
+.handy-call-dtmf-key {
+    min-width: 56px;
+    min-height: 48px;
+    border-radius: 24px;
+}
+
+.handy-call-dtmf-key:active {
+    background-color: -st-accent-color;
+    color: -st-accent-foreground;
+}
+
+.handy-call-audio-status {
+    font-size: 0.9em;
+    color: -st-insensitive-color;
+}
+
+.handy-call-state {
+    color: -st-insensitive-color;
+    font-size: 0.95em;
+}
+
+.handy-dialer-row {
+    spacing: 8px;
+    padding: 2px 8px;
+}
+
+.handy-dialer-row .button {
+    min-width: 58px;
+    min-height: 42px;
+    border-radius: 12px;
+    font-size: 1.1em;
+}
+
+.handy-dialer-entry {
+    min-width: 230px;
+    min-height: 42px;
+    padding: 4px 12px;
+    border-radius: 10px;
+    font-size: 1.15em;
+}
+
+.handy-dialer-row .suggested-action {
+    font-weight: bold;
+}
+
+.handy-dialer-row .suggested-action:hover {
+    background-color: -st-accent-color;
+    color: -st-accent-foreground;
+}
